@@ -230,6 +230,19 @@ namespace MeuApp
 
             string nomeSobrenome = RetornaNome("Filipe", "Gomes", 29);
             Console.WriteLine(nomeSobrenome);
+
+            
+        Product car = new Product(1, "Volvo S60", 38950, EProductType.Product);
+        Product automotiveMechanics = new Product(2, "Engine repair", 2000, EProductType.Service);
+
+        Console.WriteLine(car.Id);
+        Console.WriteLine(car.Name);
+        Console.WriteLine(car.Price);
+        Console.WriteLine(car.Type);
+        Console.WriteLine(automotiveMechanics.Id);
+        Console.WriteLine(automotiveMechanics.Name);
+        Console.WriteLine(automotiveMechanics.Price);
+        Console.WriteLine(automotiveMechanics.Type);
         }
 
         static void MeuMetodo()
@@ -248,5 +261,32 @@ namespace MeuApp
                 return "Seu nome não é Filipe.";
             }
         }
+    }
+
+    // struct
+    struct Product
+    {
+        public Product(int id, string name, double price, EProductType type)
+        {
+            Id = id;
+            Name = name;
+            Price = price;
+            Type = type;
+        }
+        public int Id;
+        public string Name;
+        public double Price;
+        public EProductType Type;
+
+        public double priceInDollar(double dollar)
+        {
+            return Price * dollar; 
+        }
+    }
+
+    enum EProductType
+    {
+        Product = 1,
+        Service = 2
     }
 }
