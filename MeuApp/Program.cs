@@ -231,20 +231,146 @@ namespace MeuApp
             string nomeSobrenome = RetornaNome("Filipe", "Gomes", 29);
             Console.WriteLine(nomeSobrenome);
 
-            
-        Product car = new Product(1, "Volvo S60", 38950, EProductType.Product);
-        Product automotiveMechanics = new Product(2, "Engine repair", 2000, EProductType.Service);
 
-        Console.WriteLine(car.Id);
-        Console.WriteLine(car.Name);
-        Console.WriteLine(car.Price);
-        Console.WriteLine(car.Type);
-        Console.WriteLine(automotiveMechanics.Id);
-        Console.WriteLine(automotiveMechanics.Name);
-        Console.WriteLine(automotiveMechanics.Price);
-        Console.WriteLine(automotiveMechanics.Type);
+            Product car = new Product(1, "Volvo S60", 38950, EProductType.Product);
+            Product automotiveMechanics = new Product(2, "Engine repair", 2000, EProductType.Service);
+
+            Console.WriteLine(car.Id);
+            Console.WriteLine(car.Name);
+            Console.WriteLine(car.Price);
+            Console.WriteLine(car.Type);
+            Console.WriteLine(automotiveMechanics.Id);
+            Console.WriteLine(automotiveMechanics.Name);
+            Console.WriteLine(automotiveMechanics.Price);
+            Console.WriteLine(automotiveMechanics.Type);
+
+            // strings
+
+            //guids
+            var id = Guid.NewGuid();
+            id = new Guid("a7bb5045-f6d4-45d6-be10-e7f504437599");
+            Console.WriteLine(id.ToString().Substring(0, 8));
+
+            // interpolação de strings
+            var price = 3.75;
+            var texto = "A passagem de ônibus custa R$" + price;
+            Console.WriteLine(texto);
+
+            var texto2 = string.Format("O preço da gasolina é R${0} no dia sem imposto.", price);
+            Console.WriteLine(texto2);
+
+            // Datas
+            var data = new DateTime();
+            Console.WriteLine(data);
+
+            var dataAtual = DateTime.Now;
+            Console.WriteLine(dataAtual);
+
+            // Array
+            var cidades = new string[5];
+            cidades[0] = "Rio de Janeiro";
+            cidades[1] = "São Paulo";
+            cidades[2] = "Curitiba";
+            cidades[3] = "Florianópolis";
+            cidades[4] = "Porto Alegre";
+
+            Console.WriteLine(cidades[0]);
+            Console.WriteLine(cidades[1]);
+            Console.WriteLine(cidades[2]);
+            Console.WriteLine(cidades[3]);
+            Console.WriteLine(cidades[4]);
+
+            var numeros = new int[3] { 100, 34, 30 };
+            Console.WriteLine(numeros);
+
+            // percorrendo o array
+            // var numerosAteDez = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+            // for (var index = 0; index <= numerosAteDez.Length; index++)
+            // {
+            //     Console.WriteLine(numerosAteDez[index]);
+            // }
+
+            // percorrendo com ForEach
+            var funcionarios = new Funcionario[10];
+            funcionarios[0] = new Funcionario() { Id = 1288, Nome = "Monkey D. Luffy" };
+            funcionarios[1] = new Funcionario() { Id = 826, Nome = "Roronoa Zoro" };
+            funcionarios[2] = new Funcionario() { Id = 1029, Nome = "Nami" };
+            funcionarios[3] = new Funcionario() { Id = 1456, Nome = "Usopp" };
+            funcionarios[4] = new Funcionario() { Id = 977, Nome = "Sanji" };
+            funcionarios[5] = new Funcionario() { Id = 1340, Nome = "Tony Tony Chopper" };
+            funcionarios[6] = new Funcionario() { Id = 749, Nome = "Nico Robin" };
+            funcionarios[7] = new Funcionario() { Id = 823, Nome = "Franky" };
+            funcionarios[8] = new Funcionario() { Id = 21, Nome = "Brook" };
+            funcionarios[9] = new Funcionario() { Id = 11, Nome = "Jimbei" };
+
+            foreach (var funcionario in funcionarios)
+            {
+                Console.WriteLine(funcionario.Id);
+                Console.WriteLine(funcionario.Nome);
+            }
+
+            // Exceptions
+            var arr = new int[3];
+
+            try
+            {
+
+                // for (var index = 0; index < 10; index++)
+                // {
+                //     // System.IndexOutOfRangeException
+                //     Console.WriteLine(arr[index]);
+                // }
+
+                Cadastrar("");
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.InnerException);
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Não encontrei o índice na lista!");
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.InnerException);
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Falha ao cadastrar texto.");
+            }
+            catch (MinhaException e)
+            {
+                Console.WriteLine(e.InnerException);
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.QuandoAconteceu);
+                Console.WriteLine("Excessão customizada.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.InnerException);
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Ops, algo deu errado !!!");
+            }
+            finally
+            {
+                Console.WriteLine("Chegou ao fim !!!");
+            }
         }
 
+        static void Cadastrar(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+            {
+                throw new MinhaException(DateTime.Now);
+            }
+        }
+
+        public class MinhaException : Exception
+        {
+            public MinhaException(DateTime date)
+            {
+                QuandoAconteceu = date;
+            }
+            public DateTime QuandoAconteceu { get; set; }
+        }
         static void MeuMetodo()
         {
             Console.WriteLine("Aprender C# é ao legal.");
@@ -254,7 +380,7 @@ namespace MeuApp
         {
             if (nome == "Filipe")
             {
-                return nome + " " + sobrenome+ " tem " + idade.ToString() + " anos.";
+                return nome + " " + sobrenome + " tem " + idade.ToString() + " anos.";
             }
             else
             {
@@ -262,6 +388,8 @@ namespace MeuApp
             }
         }
     }
+
+
 
     // struct
     struct Product
@@ -280,7 +408,7 @@ namespace MeuApp
 
         public double priceInDollar(double dollar)
         {
-            return Price * dollar; 
+            return Price * dollar;
         }
     }
 
@@ -288,5 +416,11 @@ namespace MeuApp
     {
         Product = 1,
         Service = 2
+    }
+
+    public struct Funcionario
+    {
+        public int Id { get; set; }
+        public string Nome { get; set; }
     }
 }

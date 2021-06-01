@@ -25,7 +25,7 @@ namespace Calculator
 
             short res = short.Parse(Console.ReadLine());
 
-            switch(res)
+            switch (res)
             {
                 case 1: Soma(); break;
                 case 2: Subtracao(); break;
@@ -33,7 +33,7 @@ namespace Calculator
                 case 4: Multipicacao(); break;
                 case 5: System.Environment.Exit(0); break;
                 default: Menu(); break;
-                
+
             }
         }
 
@@ -84,7 +84,8 @@ namespace Calculator
         }
 
         // Método Divisão
-        static void Divisao() {
+        static void Divisao()
+        {
             Console.Clear();
 
             Console.WriteLine("---- Divisão ----");
