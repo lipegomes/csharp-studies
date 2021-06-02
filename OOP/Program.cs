@@ -1,4 +1,5 @@
 ﻿using System;
+using Balta.ContentContext;
 
 namespace OOP
 {
@@ -6,19 +7,7 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            // Tipo de referência
-            // Armazena -> Endereço dos dados
-            Console.WriteLine("Hello World!");
+            var course = new Course();
         }
-    }
-
-    // Classe
-    class Payment
-    {
-        // Propriedades
-        DateTime DueDate;
-
-        // Métodos
-        void Pay(){}
     }
 }
