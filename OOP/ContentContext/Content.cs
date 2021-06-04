@@ -1,8 +1,15 @@
+using System;
+using Balta.SharedContext;
+
 namespace Balta.ContentContext
 {
-    public class Content
+    public class Content : Base
     {
-        public int Id {get; set; }
+        public Content(string title, string url)
+        {
+            Title = title;
+            Url = url;
+        }
 
         public string Title { get; set; }
 
