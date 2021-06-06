@@ -1,0 +1,9 @@
+
+
+		instancia do docker: caminho no docker     caminho a para onde irá copiar o arquivo
+docker cp 0acb02aa6f58:/var/opt/mssql/data/DataBase.bak D:\dev\SqlServer\DataBaseBackup
+
+cp - copy
+0acb02aa6f58 - númeração da instância no docker
+/var/opt/mssql/data/DataBase.bak - caminho do diretório aonde o docker está armazenado.
+D:\dev\SqlServer\DataBaseBackup - caminho do diretório aonde o arquivo de backup será armazenado no ambiente de desenvolvimento local.

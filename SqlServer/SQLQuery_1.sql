@@ -173,3 +173,99 @@ INSERT INTO [Curso]([Nome], [CategoriaId]) VALUES('Angular', 2);
 INSERT INTO [Curso]([Nome], [CategoriaId]) VALUES('Flutter', 3);
 
 INSERT INTO [Curso] VALUES('Flutter e SQLite', 3);
+
+/* Queries*/
+SELECT TOP 100
+    [Id], [Nome], [CategoriaId]
+FROM
+    [Curso];
+
+SELECT TOP 100
+    [Id], [Nome], [CategoriaId]
+FROM
+    [Curso]
+WHERE
+    [CategoriaId] = 1 AND
+    [Id] = 1;
+
+SELECT TOP 100
+    [Id], [Nome], [CategoriaId]
+FROM
+    [Curso]
+WHERE
+    [Id] = 1 OR
+    [CategoriaId] IS NULL;
+
+SELECT TOP 100
+    [Id], [Nome], [CategoriaId]
+FROM
+    [Curso]
+WHERE
+    [Id] = 1 AND
+    [CategoriaId] IS NULL;
+
+/* Order By */
+SELECT TOP 100
+    [Id], [Nome], [CategoriaId]
+FROM
+    [Curso]
+-- WHERE
+--     [CategoriaId] = 1;
+ORDER BY
+    [Nome] DESC;
+
+SELECT TOP 100
+    [Id], [Nome], [CategoriaId]
+FROM
+    [Curso]
+-- WHERE
+--     [CategoriaId] = 1;
+ORDER BY
+    [Nome] ASC;
+
+/* Update */
+select * from Categoria;
+
+INSERT INTO [Categoria]([Nome]) VALUES('Azure');
+INSERT INTO [Categoria]([Nome]) VALUES('zzz');
+
+BEGIN TRANSACTION
+    UPDATE
+        [Categoria]
+    SET
+        [Nome] = 'DevOps'
+    WHERE
+        [Id] = '1003'
+ROLLBACK
+
+BEGIN TRANSACTION
+    UPDATE
+        [Categoria]
+    SET
+        [Nome] = 'DevOps'
+    WHERE
+        [Id] = '1003'
+COMMIT
+
+/* Delete */
+DELETE FROM [Categoria]
+WHERE
+    [Id] = '1002';
+
+DELETE FROM [Categoria]
+WHERE
+    [Id] = '1003';
+
+select * from Categoria;
+
+DELETE FROM
+    [Curso]
+WHERE
+    [CategoriaId] = 3;
+
+DELETE FROM
+    [Categoria]
+WHERE
+    [Id] = 3;
+
+select * from Categoria;
