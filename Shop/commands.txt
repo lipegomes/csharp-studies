@@ -1,0 +1,25 @@
+- Rodar aplicação e vizualizar debug em tempo real
+dotnet watch run
+
+- Gerar migração dos dados
+
+dotnet ef migrations add InitialCreate
+
+- Executar a atualização do banco de dados
+
+dotnet ef database update
+
+
+**** Instalação de pacotes ****
+
+dotnet add package Microsoft.EntityFrameworkCore.InMemory 
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+dotnet add package Microsoft.AspNetCore.Authentication
+
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 3.1.16

@@ -28,7 +28,8 @@ namespace Shop.Controllers
         [HttpGet]
         [Route("{id:int}")]
         public async Task<ActionResult<Product>> GetById(
-            [FromServices] DataContext context
+            [FromServices] DataContext context,
+            int id
         )
         {
             var product = await context
@@ -42,7 +43,8 @@ namespace Shop.Controllers
         [HttpGet] //products/categories/1
         [Route("categories/{id:int}")]
         public async Task<ActionResult<List<Product>>> GetByCategory(
-            [FromServices] DataContext context
+            [FromServices] DataContext context,
+            int id
         )
         {
             var products =await context
@@ -52,6 +54,25 @@ namespace Shop.Controllers
                 .Where(x => x.CategoryId == id)
                 .ToListAsync();
             return products;
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<ActionResult<Product>> Post(
+            [FromServices] DataContext context,
+            [FromBody] Product model
+        )
+        {
+            if (ModelState.IsValid)
+            {
+                context.Products.Add(model);
+                await context.SaveChangesAsync();
+                return model;
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
     }
 }
