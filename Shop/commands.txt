@@ -23,3 +23,8 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.AspNetCore.Authentication
 
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 3.1.16
+
+dotnet add package Swashbuckle.AspNetCore
+
+- Interface gráfica do swagger no navegador
+https://localhost:5001/swagger/index.html
