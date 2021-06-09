@@ -78,3 +78,14 @@ dotnet sln add .\DevStore.Shared\DevStore.Shared.csproj
 
 dotnet sln add .\DevStore.Tests\DevStore.Tests.csproj
 ```
+
+- Compilar o código
+```
+dotnet build
+```
+
+- Adicionar DevStore.Domain dentro do arquivo sln de DevStore.Tests
+
+```
+dotnet add reference ..\DevStore.Domain\DevStore.Domain.csproj
+```
