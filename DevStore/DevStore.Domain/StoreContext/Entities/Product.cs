@@ -1,5 +1,3 @@
-using System;
-
 namespace DevStore.Domain.StoreContext.Entities
 {
     public class Product

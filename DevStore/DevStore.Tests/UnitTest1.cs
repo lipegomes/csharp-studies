@@ -15,8 +15,9 @@ namespace DevStore.Tests
                 "000000000001",
                 "foobar@foobar.com",
                 "01000000001",
-                "Avenue 100, number 7"
-            );
+                "Avenue 100, number 7");
+
+            var order = new Order(c);
         }
     }
 }
