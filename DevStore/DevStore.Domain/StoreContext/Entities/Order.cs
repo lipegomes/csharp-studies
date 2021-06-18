@@ -24,18 +24,17 @@ namespace DevStore.Domain.StoreContext.Entities
         public EOrderStatus Status { get; private set; }
         public IReadOnlyCollection<OrderItem> Items => _items.ToArray();
         public IReadOnlyCollection<Delivery> Deliveries  => _deliveries.ToArray();
-
-        public void AddItem(OrderItem item)
+        
+        public void AddItem(Product product, decimal quantity)
         {
+            if (quantity > product.QuantityOnHand)
+                AddNotification("OrderItem", $"Product {product.Title} não tem {quantity} em estoque.");
+
+            var item = new OrderItem(product, quantity);
             _items.Add(item);
         }
-        
-        public void AddDelivery(Delivery delivery)
-        {
-            _deliveries.Add(delivery);
-        }
 
-        // To Place An Order
+        // Criar um pedido
         public void Place(){
             // Gera o número do pedido
             Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0,8).ToUpper();
